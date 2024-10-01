@@ -2,7 +2,7 @@
 FROM node:14.17.0-slim
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/index
 
 # Copy package.json and package-lock.json files
 COPY package*.json ./
