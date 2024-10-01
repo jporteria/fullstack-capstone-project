@@ -60,7 +60,6 @@ router.post('/login', async (req, res) => {
     console.log("\n\n Inside login")
 
     try {
-        // const collection = await connectToDatabase();
         const db = await connectToDatabase();
         const collection = db.collection("users");
         const theUser = await collection.findOne({ email: req.body.email });
