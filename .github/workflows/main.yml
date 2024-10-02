@@ -26,22 +26,22 @@ jobs:
           find ./giftlink-backend -name searchRoutes.js -exec jshint {} +
           echo "Linted all the js files successfully"
   client_build:
-      # name: Build client
-      # runs-on: ubuntu-latest
-      # steps:
-      # - name: Checkout Repository
-      #   uses: actions/checkout@v4
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 20
-      # - name: Run build
-      #   run: |
-      #     cd giftlink-frontend
-      #     npm install
-      #     npm run build
-      #     echo "Client-side build successfully"
-
+      name: Build client
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run build
+        run: |
+          cd giftlink-frontend
+          npm install
+          npm run build
+          echo "Client-side build successfully"
+  create_docker_image:
       name: Build image
       runs-on: ubuntu-latest
       steps:
