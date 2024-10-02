@@ -1,7 +1,7 @@
-FROM node:14 AS frontend-build
-WORKDIR /usr/src/frontend
-COPY ./giftlink-frontend ./
-RUN npm install && npm run build
+# FROM node:14 AS frontend-build
+# WORKDIR /usr/src/frontend
+# COPY ./giftlink-frontend ./
+# RUN npm install && npm run build
 
 
 # Use Node.js LTS version
@@ -20,7 +20,7 @@ RUN npm install --production
 COPY . .
 
 # Copy the frontend build from the previous stage
-COPY --from=frontend-build /usr/src/frontend/build ./build
+# COPY --from=frontend-build /usr/src/frontend/build ./build
 
 # Expose port (if needed)
 EXPOSE 9000
