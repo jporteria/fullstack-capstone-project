@@ -1,6 +1,6 @@
 FROM node:14 AS frontend-build
 WORKDIR /usr/src/frontend
-COPY ../giftlink-frontend ./
+COPY ./giftlink-frontend ./
 RUN npm install && npm run build
 
 
