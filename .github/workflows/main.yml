@@ -51,7 +51,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f docker-frontend/Dockerfile -t ghcr.io/gifwebsite/giftwebsite:latest .
+          docker build -f giftwebsite/Dockerfile -t ghcr.io/gifwebsite/giftwebsite:latest .
           docker push ghcr.io/gifwebsite/giftwebsite:latest
 
     # # Step 1: Checkout the repository code
