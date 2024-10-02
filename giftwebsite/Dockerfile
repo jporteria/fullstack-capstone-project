@@ -11,6 +11,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # Copy application code
+COPY ../giftlink-frontend/build ./build
 COPY . .
 
 # Expose port (if needed)
