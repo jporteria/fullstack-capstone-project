@@ -76,4 +76,4 @@ jobs:
       with:
         context: ./giftwebsite # Assuming Dockerfile is inside a directory named 'giftwebsite'
         push: true
-        tags: ghcr.io/gifwebsite/Dockerfile/giftwebsite:latest
+        tags: ghcr.io/gifwebsite/giftwebsite:latest
