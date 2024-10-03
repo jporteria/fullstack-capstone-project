@@ -46,29 +46,29 @@ jobs:
     runs-on: ubuntu-latest
     # needs: client_build
     steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  
+      # Step 2: Set up Docker Buildx for advanced Docker builds
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+  
+      # Step 3: Log in to GitHub Container Registry (ghcr.io)
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.token }}
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build Docker image
         run: |
-          docker build -f giftwebsite/Dockerfile -t ghcr.io/gifwebsite/giftwebsite:latest .
+          docker build -f giftwebsite/Dockerfile -t giftwebsite:latest ghcr.io
           docker push ghcr.io/gifwebsite/giftwebsite:latest
 
-    # # Step 1: Checkout the repository code
-    # - name: Checkout repository
-    #   uses: actions/checkout@v4
-
-    # # Step 2: Set up Docker Buildx for advanced Docker builds
-    # - name: Set up Docker Buildx
-    #   uses: docker/setup-buildx-action@v2
-
-    # # Step 3: Log in to GitHub Container Registry (ghcr.io)
-    # - name: Log in to GitHub Container Registry
-    #   uses: docker/login-action@v2
-    #   with:
-    #     registry: ghcr.io
-    #     username: ${{ github.actor }}
-    #     password: ${{ secrets.token }}
 
     # # Step 4: Build and push the first image (giftlink)
     # - name: Build and push giftlink image
