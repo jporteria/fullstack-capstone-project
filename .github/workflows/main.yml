@@ -63,25 +63,24 @@ jobs:
           password: ${{ secrets.token }}
       - name: Checkout code
         uses: actions/checkout@v2
+      # Step 4: Build and push the first image (giftlink)
+      - name: Build and push giftlink image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./giftlink-backend # Assuming Dockerfile is inside a directory named 'giftlink'
+          push: true
+          tags: ghcr.io/${{ github.repository }}/giftlink:latest
+  
+      # Step 5: Build and push the second image (giftwebsite)
+      - name: Build and push giftwebsite image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./giftwebsite # Assuming Dockerfile is inside a directory named 'giftwebsite'
+          push: true
+          tags: ghcr.io/gifwebsite/giftwebsite:latest
 
-      - name: Build Docker image
-        run: |
-          docker build -f giftwebsite/Dockerfile -t giftwebsite:latest ghcr.io
-          docker push ghcr.io/gifwebsite/giftwebsite:latest
+      # - name: Build Docker image
+      #   run: |
+      #     docker build -f giftwebsite/Dockerfile -t giftwebsite:latest ghcr.io
+      #     docker push ghcr.io/gifwebsite/giftwebsite:latest
 
-
-    # # Step 4: Build and push the first image (giftlink)
-    # - name: Build and push giftlink image
-    #   uses: docker/build-push-action@v5
-    #   with:
-    #     context: ./giftlink-backend # Assuming Dockerfile is inside a directory named 'giftlink'
-    #     push: true
-    #     tags: ghcr.io/${{ github.repository }}/giftlink:latest
-
-    # # Step 5: Build and push the second image (giftwebsite)
-    # - name: Build and push giftwebsite image
-    #   uses: docker/build-push-action@v5
-    #   with:
-    #     context: ./giftwebsite # Assuming Dockerfile is inside a directory named 'giftwebsite'
-    #     push: true
-    #     tags: ghcr.io/gifwebsite/giftwebsite:latest
