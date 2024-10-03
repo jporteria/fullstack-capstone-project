@@ -72,10 +72,10 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/giftlink:latest
   
       # Step 5: Build and push the second image (giftwebsite)
-      - name: Build and push giftwebsite image
+      - name: Build and push giftlink image
         uses: docker/build-push-action@v5
         with:
-          context: ./giftwebsite # Assuming Dockerfile is inside a directory named 'giftwebsite'
+          context: ./giftlink-frontend # Assuming Dockerfile is inside a directory named 'giftwebsite'
           push: true
           tags: ghcr.io/${{ github.repository }}/giftwebsite:latest 
 
