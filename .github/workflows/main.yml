@@ -44,7 +44,7 @@ jobs:
   create_docker_image:
     name: Build image
     runs-on: ubuntu-latest
-    # needs: client_build
+    needs: client_build
     steps:
       # Step 1: Checkout the repository code
       - name: Checkout repository
