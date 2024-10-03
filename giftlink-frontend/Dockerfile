@@ -1,29 +1,29 @@
-# FROM node:14 AS frontend-build
-# WORKDIR /usr/src/frontend
-# COPY ./giftlink-frontend ./
-# RUN npm install && npm run build
+# Step 1: Use the official Node.js image as a parent image
+FROM node:16 AS build
 
+# Step 2: Set the working directory
+WORKDIR /app
 
-# Use Node.js LTS version
-FROM node:14.17.0-slim
-
-# Set working directory
-WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json files
+# Step 3: Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --production
+# Step 4: Install dependencies
+RUN npm install
 
-# Copy application code
+# Step 5: Copy the rest of your application code
 COPY . .
 
-# Copy the frontend build from the previous stage
-# COPY --from=frontend-build /usr/src/frontend/build ./build
+# Step 6: Build the React app
+RUN npm run build
 
-# Expose port (if needed)
+# Step 7: Use a lightweight web server to serve the app
+FROM nginx:alpine
+
+# Step 8: Copy the build output to the Nginx html directory
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Step 9: Expose the port Nginx is running on
 EXPOSE 9000
 
-# Run the application
-CMD ["node", "index.js"]
+# Step 10: Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
