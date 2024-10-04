@@ -138,6 +138,8 @@ body,
 
 /* Change the background color of the navbar */
 .navbar {
+  width: 100vw;
+  padding: 10px 20px;
   background-color: #f8f9fa; /* A light color for contrast with the text */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
 }
@@ -154,6 +156,11 @@ body,
   background-color: transparent; /* Optional: Adds a background color to the active link */
   text-decoration: underline; /* Underlines the active link */
   font-weight: bold; /* Makes the active link bold */
+}
+.navbar-brand{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0056b3;
 }
 
 /* Style for login button */
