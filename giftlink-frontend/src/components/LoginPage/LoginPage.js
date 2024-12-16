@@ -4,7 +4,7 @@ import {urlConfig} from '../../config';
 //Step 1 - Task 2
 import { useAppContext } from '../../context/AuthContext';
 //Step 1 - Task 3
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './LoginPage.css';
 
@@ -100,8 +100,10 @@ function LoginPage() {
                             <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
                         </div>
                         <button className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Login</button>
-                        <p className="mt-4 text-center">
-                            New here? <a href="/app/register" className="text-primary">Register Here</a>
+                        <p className="mt-3 text-center">
+                          Don't have an account?{" "}
+                          <Link className="text-primary" to="/app/register">Register Here</Link>
+                            {/* New here? <a href="/app/register" className="text-primary">Register Here</a> */}
                         </p>
                     </div>
                 </div>
